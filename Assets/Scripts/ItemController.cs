@@ -21,30 +21,15 @@ public class ItemController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Subscribe<Events.OnItemClicked>(OnItemClicked);
-        EventManager.Subscribe<Events.OnItemsPopped>(OnItemsPop);
     }
 
 
     private void OnDisable()
     {
         EventManager.Unsubscribe<Events.OnItemClicked>(OnItemClicked);
-        EventManager.Unsubscribe<Events.OnItemsPopped>(OnItemsPop);
     }
 
-    private void OnItemsPop(Events.OnItemsPopped obj)
-    {
-        /*
-        List<Item> poppingList = obj.Items;
-
-        foreach (var item in poppingList)
-        {
-            if (item != this.item) return;
-            itemAnimator.Pop();
-        }*/
-        
-       
-    }
-
+    
     public  void ShiftRight(Slot slot)
     {
         transform.SetParent(slot.transform);
@@ -84,7 +69,7 @@ public class ItemController : MonoBehaviour
     
     
     private async UniTaskVoid HandleItemClickedAsync(Item clicked)
-// UniTaskVoid = fire-and-forget async, perfect for event-driven entry points
+
     {
         if (SlotController.Instance.ContainsType(item) && 
             SlotController.Instance.GetSameItemCount(clicked.itemID) >= 1)
@@ -103,8 +88,7 @@ public class ItemController : MonoBehaviour
             suitableSlot.SetOccupation(true);
             
             await itemMovement.JumpToSlot(suitableSlot); 
-            // ✅ Now actually waits for the full jump + landing
-            // OnItemLanded fires INSIDE JumpToSlot after this completes
+            
 
             EventManager.Fire(new Events.OnItemLanded(suitableSlot));
             return;
