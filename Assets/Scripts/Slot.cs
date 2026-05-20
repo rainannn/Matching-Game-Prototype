@@ -1,44 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using KBCore.Refs;
 using UnityEngine;
 
 public class Slot : MonoBehaviour, IDespawnable
 {
-    
-    [SerializeField] [Self] private Despawner _despawner;
+    [SerializeField] [Self] private Despawner despawner;
     [SerializeField] [Anywhere] private ColorData colorData;
     [SerializeField] [Anywhere] private MeshRenderer[] colorable;
+    
     private bool _isOccupied;
-    private Item _item;
+    public Item item;
     private static Vector3 initialPos;
+    public const float BumpDuration = 0.4f;
+    private Sequence _bumpSequence;
 
-  
 
-    void Start()
+    private void Start()
     {
         Init();
     }
 
-    public void  Bump()
+    public void Bump()
     {
         transform.DOKill();
-        
-        Sequence bumpSequence = DOTween.Sequence();
-        bumpSequence.Append(transform.DOMoveY(initialPos.y - 0.05f, .2f).SetEase(Ease.Linear));
-        bumpSequence.Append(transform.DOMoveY(initialPos.y, .2f).SetEase(Ease.InBack));
-        
-        bumpSequence.InsertCallback(0, ()=> SetColor(colorData.transparentMat));
-        bumpSequence.InsertCallback(.4f, ()=> SetColor(colorData.initialMat));
-        
-        
+
+        _bumpSequence = DOTween.Sequence();
+
+        _bumpSequence.Append(transform.DOMoveY(initialPos.y - 0.05f, BumpDuration / 2).SetEase(Ease.Linear));
+        _bumpSequence.Append(transform.DOMoveY(initialPos.y, BumpDuration / 2).SetEase(Ease.InBack));
+
+        _bumpSequence.InsertCallback(0, () => SetColor(colorData.transparentMat));
+        _bumpSequence.InsertCallback(BumpDuration, () => SetColor(colorData.initialMat));
     }
 
     public Item GetItem()
     {
-        return _item;
+        return item;
     }
 
     private void Init()
@@ -55,7 +52,7 @@ public class Slot : MonoBehaviour, IDespawnable
 
     public void SetItem(Item item)
     {
-        _item = item;
+        this.item = item;
     }
 
     private void SetPosition(int x)
@@ -85,7 +82,7 @@ public class Slot : MonoBehaviour, IDespawnable
 
     public void Despawn()
     {
-        _despawner.Despawn();
+        despawner.Despawn();
     }
 
     private void Clear()
@@ -93,5 +90,3 @@ public class Slot : MonoBehaviour, IDespawnable
         _isOccupied = false;
     }
 }
-
-

@@ -127,6 +127,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 2964096543013348268}
   Animator: {fileID: 2456696160098600076}
   Mesh: {fileID: 1892649223449098754}
+  isJumping: 0
   itemID: 1
 --- !u!114 &4263972581546642119
 MonoBehaviour:
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6f512017fb8474f9859be2a4444a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 6213048453021433548}
+  item: {fileID: 6213048453021433548}
 --- !u!114 &5488368662475661705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +169,7 @@ MonoBehaviour:
   itemMovement: {fileID: 3180249393445050333}
   itemAnimator: {fileID: 2456696160098600076}
   item: {fileID: 6213048453021433548}
+  slotsQueue: []
 --- !u!114 &2456696160098600076
 MonoBehaviour:
   m_ObjectHideFlags: 0
