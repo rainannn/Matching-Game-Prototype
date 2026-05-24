@@ -38,12 +38,12 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
     {
         EventManager.Subscribe<Events.OnItemLanded>(OnItemLanded);
     }
-
+    
     private void OnDisable()
     {
         EventManager.Unsubscribe<Events.OnItemLanded>(OnItemLanded);
     }
-
+    
     private void OnItemLanded(Events.OnItemLanded obj)
     {
         Slot slot = obj.Slot;
@@ -57,8 +57,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
     }
 
     #endregion
-
-
+    
     #region Helper Methods
 
     //Ordered By method's return type.
@@ -66,7 +65,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
     {
         return slots[index];
     }
-
+    
     public Slot GetSlot(bool contains, Item item)
     {
         if (!contains)
@@ -93,7 +92,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
         return null;
     }
-
+    
     public int GetSameItemCount(int itemID)
     {
         int count = 0;
@@ -105,7 +104,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
         return count;
     }
-
+    
     public int GetIndex(Slot slot)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -118,12 +117,12 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
         return -1;
     }
-
+    
     public bool HasItem(Item item)
     {
         return activeItems.Contains(item);
     }
-
+    
     public bool ContainsType(Item item)
     {
         foreach (Item activeItem in activeItems)
@@ -134,7 +133,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
         return false;
     }
-
+    
     public void AddToList(bool shifting, Item item, int index)
     {
         if (!shifting)
@@ -146,7 +145,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
         activeItems.Insert(index, item);
     }
-
+    
     private void Clear()
     {
         activeItems.Clear();
@@ -171,12 +170,11 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
             activeItem.itemController.ShiftRight(slots[i]);
         }
     }
-
-
-    private IEnumerator ShiftLeftItems(int index)
+    
+    private void ShiftLeftItems(int slotIndex)
     {
-        int waitTimeMultiplier = 0;
-        for (int i = index; i < activeItems.Count; i++)
+        
+        for (int i = slotIndex; i < activeItems.Count; i++)
         {
             if (activeItems[i] == null) break;
 
@@ -192,14 +190,12 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
             slots[i].SetItem(activeItems[i]);
             slots[i].SetOccupation(true);
             
-            activeItems[i].itemController.ShiftLeft(slots[i], slots[i + 1], slots[i + 2]);
-            
-            yield return new WaitForSeconds(0.1f * waitTimeMultiplier);
-            
-            waitTimeMultiplier++;
         }
+        
+        activeItems[slotIndex].itemController.ShiftLeft(slots[slotIndex], slots[slotIndex + 1], slots[slotIndex + 2], slotIndex);
+        
     }
-
+    
     private bool TryPop(int index)
     {
         Item landed = activeItems[index];
@@ -216,10 +212,11 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
         Debug.Log("pop");
         return true;
     }
-
-
+    
     private IEnumerator PopItems(int index)
     {
+        Debug.Log(index);
+        
         Item item0 = activeItems[index - 2];
         Item item1 = activeItems[index - 1];
         Item item2 = activeItems[index];
@@ -242,8 +239,9 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
         item1.Animator.Pop();
         item2.Animator.Pop();
         
-        StartCoroutine(ShiftLeftItems(index - 2));
+        ShiftLeftItems(index - 2);
     }
-
+    
+    
     #endregion
 }

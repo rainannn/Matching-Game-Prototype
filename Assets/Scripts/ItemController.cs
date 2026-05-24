@@ -14,9 +14,9 @@ public class ItemController : MonoBehaviour
     
     public List<Slot> slotsQueue = new(3);
 
-    private const float ShiftingJumpDuration = 0.3f;
+    private const float ShiftingJumpDuration = 0.2f;
     private const float ShiftingJumpPower = 0.5f;
-
+    private const float TotalTweenDurationPerJump = ShiftingJumpDuration + 0.4f;
     private const int DefaultIndex = -1;
 
 
@@ -34,29 +34,58 @@ public class ItemController : MonoBehaviour
 
     public void ShiftRight(Slot slot)
     {
-        
         transform.SetParent(slot.transform);
         itemMovement.Jump(slot, ShiftingJumpDuration, ShiftingJumpPower);
     }
 
-    public void ShiftLeft(Slot slot1, Slot slot2, Slot slot3)
+    public void ShiftLeft(Slot slot1, Slot slot2, Slot slot3, int itemIndex)
     {
         transform.SetParent(slot1.transform);
 
         slotsQueue.Add(slot3);
         slotsQueue.Add(slot2);
         slotsQueue.Add(slot1);
+        
+        var nextItemSlot1 = SlotController.Instance.GetSlot(SlotController.Instance.GetIndex(slot1) + 1);
+        var nextItemSlot2 = SlotController.Instance.GetSlot(SlotController.Instance.GetIndex(slot1) + 2);
+        var nextItemSlot3 = SlotController.Instance.GetSlot(SlotController.Instance.GetIndex(slot1) + 3);
 
         Sequence shift = DOTween.Sequence();
 
         shift.AppendCallback(() => itemMovement.Jump(slotsQueue[0], ShiftingJumpDuration, ShiftingJumpPower));
         
-        shift.InsertCallback(ItemMovement.JumpDurationMultiplier, () => itemMovement.Jump(slotsQueue[1], ShiftingJumpDuration, ShiftingJumpPower));
+        shift.InsertCallback(TotalTweenDurationPerJump * 0.2f, () =>
+        {
+            itemIndex++;
+            CallNext(nextItemSlot1, nextItemSlot2,nextItemSlot3, itemIndex);
+        });
         
-        shift.InsertCallback(ItemMovement.JumpDurationMultiplier * 2,
+        shift.InsertCallback(ShiftingJumpDuration, () =>
+        {
+            itemMovement.Jump(slotsQueue[1], ShiftingJumpDuration, ShiftingJumpPower);
+        });
+        
+        shift.InsertCallback(ShiftingJumpDuration * 2,
             () => itemMovement.Jump(slotsQueue[2], ShiftingJumpDuration, ShiftingJumpPower));
 
-        shift.OnComplete(slotsQueue.Clear);
+        shift.OnComplete(()=>
+        {
+            slotsQueue.Clear();
+        });
+    }
+
+
+
+    private void CallNext(Slot nextItemSlot1, Slot nextItemSlot2, Slot nextItemSlot3, int itemIndex)
+    {
+        if (itemIndex > SlotController.Instance.slots.Length) return;
+            
+        var item = SlotController.Instance.slots[itemIndex].item;
+            
+        if (item != null)
+        {
+            item.itemController.ShiftLeft(nextItemSlot1, nextItemSlot2, nextItemSlot3, itemIndex);
+        }
     }
 
     private void OnItemClicked(Events.OnItemClicked obj)
@@ -83,7 +112,7 @@ public class ItemController : MonoBehaviour
             int insertIndex = SlotController.Instance.GetIndex(suitableSlot);
 
             SlotController.Instance.AddToList(true, item, insertIndex);
-
+            
             SlotController.Instance.ShiftRightItems(insertIndex + 1);
 
             suitableSlot.SetItem(item);

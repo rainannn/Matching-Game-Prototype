@@ -38,7 +38,8 @@ public class ItemMovement : MonoBehaviour
     {
         transform.DOJump(slot.transform.position, jumpPower, 1, duration)
             .SetEase(Ease.Linear)
-            .OnComplete(slot.Bump);
+            .InsertCallback(duration,slot.Bump);
+        
     }
 
 
@@ -49,7 +50,7 @@ public class ItemMovement : MonoBehaviour
 
         _jumpSequence = DOTween.Sequence();
 
-
+        
         _jumpSequence.AppendCallback(() => Jump(slot, 0.5f, 1));
         _jumpSequence.Join(transform.DORotate(_rotationValue, 0.5f, RotateMode.WorldAxisAdd)
             .SetEase(Ease.Linear));

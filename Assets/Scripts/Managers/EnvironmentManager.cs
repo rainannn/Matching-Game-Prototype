@@ -8,21 +8,7 @@ public class EnvironmentManager : SingletonMonoBehaviour<EnvironmentManager>
     public readonly List<Item> Items = new();
     public readonly List<Slot> Slots = new();
 
-
-    private void SpawnPlayAreaColliders()
-    {
-        Spawner.Instance.CreateLevelArea(Vector2.zero);
-    }
-
-    private void Start()
-    {
-        SpawnPlayAreaColliders();
-        
-    }
-
-
-  
-
+    
     public void LoadData(LevelData levelData)
     {
         Clear();

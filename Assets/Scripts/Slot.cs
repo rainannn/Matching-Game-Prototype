@@ -11,7 +11,7 @@ public class Slot : MonoBehaviour, IDespawnable
     private bool _isOccupied;
     public Item item;
     private static Vector3 initialPos;
-    public const float BumpDuration = 0.4f;
+    public const float BumpDuration = 0.1f;
     private Sequence _bumpSequence;
 
 
@@ -22,15 +22,17 @@ public class Slot : MonoBehaviour, IDespawnable
 
     public void Bump()
     {
-        transform.DOKill();
+        //transform.DOKill();
 
         _bumpSequence = DOTween.Sequence();
 
-        _bumpSequence.Append(transform.DOMoveY(initialPos.y - 0.05f, BumpDuration / 2).SetEase(Ease.Linear));
-        _bumpSequence.Append(transform.DOMoveY(initialPos.y, BumpDuration / 2).SetEase(Ease.InBack));
+        _bumpSequence.Append(transform.DOMoveY(initialPos.y - 0.05f, BumpDuration)
+            .SetEase(Ease.Linear));
+        _bumpSequence.Append(transform.DOMoveY(initialPos.y, BumpDuration)
+            .SetEase(Ease.Linear));
 
         _bumpSequence.InsertCallback(0, () => SetColor(colorData.transparentMat));
-        _bumpSequence.InsertCallback(BumpDuration, () => SetColor(colorData.initialMat));
+        _bumpSequence.InsertCallback(BumpDuration * 1.2f, () => SetColor(colorData.initialMat));
     }
 
     public Item GetItem()
