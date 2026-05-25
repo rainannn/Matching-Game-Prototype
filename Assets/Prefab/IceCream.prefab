@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceCream
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770c5dadeaf83394ab9b9604cb2a6298, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 770c5dadeaf83394ab9b9604cb2a6298, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

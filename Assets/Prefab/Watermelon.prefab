@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Fruits_Watermelon_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9bec50f8595338488477583e4dd1675, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

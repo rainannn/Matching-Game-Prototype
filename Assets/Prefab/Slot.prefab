@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8a8e9efbbd70149a5f688127a90e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _despawner: {fileID: 2652807089267646444}
+  despawner: {fileID: 2652807089267646444}
   colorData: {fileID: 11400000, guid: 32d4641d512f7aa41b4d7d0ea5af6839, type: 2}
   colorable:
   - {fileID: 1641758771630957592}
   - {fileID: 8272693794044699732}
+  item: {fileID: 0}
 --- !u!114 &2652807089267646444
 MonoBehaviour:
   m_ObjectHideFlags: 0

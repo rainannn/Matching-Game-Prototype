@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using KBCore.Refs;
-using Unity.VisualScripting.Antlr3.Runtime.Collections;
 using UnityEngine;
+using KBCore.Refs;
 using Random = UnityEngine.Random;
 
 
@@ -24,7 +21,8 @@ public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
         float verticalMax = levelArea.Bounds.Top;
         float verticalMin = levelArea.Bounds.Bottom;
         
-        Random.Range(horizontalMin, horizontalMax);
+        var horizontal = Random.Range(horizontalMin, horizontalMax);
+        var vertical = Random.Range(verticalMin, verticalMax);
     }
 
     private int CalculateActualItemCount()

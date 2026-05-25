@@ -14,12 +14,11 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
 
     [Header("Lists")] [SerializeField] [Child]
     public Slot[] slots;
-
+    
     [SerializeField] private List<Item> activeItems = new();
     [SerializeField] private List<Item> poppingItems = new();
 
-    private static WaitForSeconds bumpDelay;
-
+    
     #endregion
 
     #region MonoBehaviour Callbacks
@@ -27,7 +26,6 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
     private void Start()
     {
         Clear();
-        bumpDelay = new WaitForSeconds(Slot.BumpDuration);
     }
 
     #endregion
@@ -221,7 +219,7 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
         Item item1 = activeItems[index - 1];
         Item item2 = activeItems[index];
         
-        yield return bumpDelay;
+        yield return BetterWaitForSeconds.Wait(Slot.BumpDuration);
 
         
         slots[index].SetOccupation(false);

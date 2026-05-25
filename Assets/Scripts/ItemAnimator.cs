@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class ItemAnimator : MonoBehaviour
 {
+    [SerializeField] [Anywhere] private ParticleData _particleData;
     [SerializeField] [Self] private Item item;
     
     
@@ -16,8 +18,16 @@ public class ItemAnimator : MonoBehaviour
         {
             transform.gameObject.SetActive(false);
             //TODO
-            //CONFETTI
             item.Despawn();
         });
+    }
+
+    
+    [Obsolete("Obsolete")]
+    private void VFX()
+    {
+        var particle = VFXManager.Instance.ItemPop(transform.position);
+        ParticleSystem.MinMaxGradient color = _particleData.appleMat.color;
+        //particle.GetComponent<ParticleSystem>().customData.SetColor(particle, color);
     }
 }

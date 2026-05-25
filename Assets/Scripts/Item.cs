@@ -20,6 +20,7 @@ public class Item : MonoBehaviour, IDespawnable, IClickable
 
     void Awake()
     {
+        
     }
 
     private void SetPosition(Vector3 pos)

@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cake
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e365b4b0a80f40d42ad44635e73c60e5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e365b4b0a80f40d42ad44635e73c60e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
