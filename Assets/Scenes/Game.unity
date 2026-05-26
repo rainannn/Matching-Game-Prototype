@@ -976,7 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb21ac2b909583e47a2f9d42b85517f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 0}
+  particle: {fileID: 6241790677541688651}
+  particleData: {fileID: 0}
 --- !u!4 &810270567
 Transform:
   m_ObjectHideFlags: 0
@@ -1295,7 +1296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1471791133
 Transform:
   m_ObjectHideFlags: 0
@@ -2762,79 +2763,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3582924952686919794, guid: d29e81a08ee0df64a9e58c800c1de271, type: 3}
   m_PrefabInstance: {fileID: 4227026371150781068}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4589441484124624588
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4035222792055163486, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_Name
-      value: CFXR3 Hit Ice B (Air)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403347238810568, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112403347238810573, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7531768400295773593, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
 --- !u!1001 &5132589892652933893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3078,6 +3006,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 844078405767701740, guid: 3c7da051f23440847805a2ced569b578, type: 3}
   m_PrefabInstance: {fileID: 5773089744854916395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6241790677541688650
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107845, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+      propertyPath: m_Name
+      value: CFXR3 Hit Ice B (Air)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+--- !u!114 &6241790677541688651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2902768926814304378, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+  m_PrefabInstance: {fileID: 6241790677541688650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb5d3c917a6ad2478d7a425f55230ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6864823278798938665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3462,5 +3458,5 @@ SceneRoots:
   - {fileID: 3763481011775675050}
   - {fileID: 1471791133}
   - {fileID: 764969597}
-  - {fileID: 4589441484124624588}
   - {fileID: 810270567}
+  - {fileID: 6241790677541688650}

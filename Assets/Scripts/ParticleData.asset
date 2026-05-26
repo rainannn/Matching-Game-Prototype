@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e140ce2c96ffdac428f35fc91a7a7be5, type: 3}
   m_Name: ParticleData
   m_EditorClassIdentifier: 
-  appleMat: {fileID: 2100000, guid: 75172797b1508044d83c08d95faae326, type: 2}
-  watermelonMat: {fileID: 2100000, guid: 11779b3e2dcb0ad488efd56ea50226f9, type: 2}
-  icecreamMat: {fileID: 2100000, guid: 18055a0db82a18049ae0f3a593042621, type: 2}
-  donutMat: {fileID: 0}
-  pineappleMat: {fileID: 0}
-  burgerMat: {fileID: 0}
+  apple: {r: 1, g: 0, b: 0, a: 1}
+  watermelonMat: {r: 0, g: 0, b: 0, a: 0}
+  icecreamMat: {r: 0, g: 0, b: 0, a: 0}
+  donutMat: {r: 0, g: 0, b: 0, a: 0}
+  pineappleMat: {r: 0, g: 0, b: 0, a: 0}
+  burgerMat: {r: 0, g: 0, b: 0, a: 0}

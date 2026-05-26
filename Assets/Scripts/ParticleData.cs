@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/ParticleData")]
 public class ParticleData : ScriptableObject
 {
-    public Material appleMat;
-    public Material watermelonMat;
-    public Material icecreamMat;
-    public Material donutMat;
-    public Material pineappleMat;
-    public Material burgerMat;
+    public Color apple;
+    public Color watermelonMat;
+    public Color icecreamMat;
+    public Color donutMat;
+    public Color pineappleMat;
+    public Color burgerMat;
 }

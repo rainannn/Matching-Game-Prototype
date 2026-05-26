@@ -7,7 +7,7 @@ using UnityEngine;
 public class VFXManager : SingletonMonoBehaviour<VFXManager>
 {
    [SerializeField] [Anywhere] private PoolableParticle particle;
-   //[SerializeField] [Anywhere] private ParticleData particleData;
+   [SerializeField] [Anywhere] private ParticleData particleData;
 
    public PoolableParticle ItemPop(Vector3 pos)
    {

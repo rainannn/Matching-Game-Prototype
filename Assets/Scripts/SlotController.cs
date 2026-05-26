@@ -237,6 +237,8 @@ public class SlotController : SingletonMonoBehaviour<SlotController>
         item1.Animator.Pop();
         item2.Animator.Pop();
         
+        if (activeItems.Count !> 0) yield break; 
+        
         ShiftLeftItems(index - 2);
     }
     
